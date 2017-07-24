@@ -1,0 +1,18 @@
+<h1></h1>
+<!--form_tagは <%= %> -->
+<%= form_tag("search", method: "get") do %>
+  <fieldset>
+  <legend>Youtube検索フォーム</legend>
+  <%= text_field_tag :keyword, @keyword, :style=>"width:300px" %>
+  <%= submit_tag '検索', :style=>"width:100px" %>
+  </fieldset>
+<% end %>
+
+<ul>
+<% if @data != nil %>
+  <span style="font-weight: bold;">【検索結果】</span>
+  <% for x,y in @data %>
+    <li><%= x %>　<a href="<%= y %>" target="_blank">Link</a></li>
+  <% end %>
+<% end %>
+</ul>
