@@ -6,6 +6,4 @@ Rails.application.routes.draw do
       #post 'reset'
     end
   end
-  resources :youtube_ver3
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
