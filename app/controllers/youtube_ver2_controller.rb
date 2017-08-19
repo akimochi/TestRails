@@ -8,12 +8,100 @@ YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
 
 class YoutubeVer2Controller < ApplicationController
+  # 初期処理
   def index
+    # ラジオボタン初期セット
+    @videoTyoe0 = true
+    @videoTyoe1 = false
+    @videoTyoe2 = false
     respond_to do |format|
       format.html
     end
   end
 
+  # 検索処理
+  def search
+
+    keyword = params[:keyword]
+    if keyword.empty?
+      # 検索語が空の場合は、何もしない
+      render :action => 'index'
+      return
+    end
+    
+    opts = Trollop::options do
+      opt :q, 'Search term', :type => String, :default => keyword
+      opt :max_results, 'Max results', :type => :int, :default => 25
+    end
+
+    # サービス取得処理
+    client, youtube = get_service
+
+    begin
+      # データ取得処理
+      search_response = client.execute!(
+      :api_method => youtube.search.list,
+      :parameters => {
+        :part => 'snippet',
+        :q => opts[:q],
+        :maxResults => opts[:max_results]
+      }
+      )
+    
+      # ハッシュでデータを格納するために用意
+      videoList = Hash::new
+      channelList = Hash::new
+      playList = Hash::new
+        
+      search_response.data.items.each do |search_result|
+        case search_result.id.kind
+        when 'youtube#video'
+          #通常の動画
+          videoList.store("#{search_result.snippet.title}", "https://www.youtube.com/watch?v=#{search_result.id.videoId}")
+        when 'youtube#channel'
+          #チャンネル
+          channelList.store("#{search_result.snippet.title}", "https://www.youtube.com/channel/#{search_result.id.channelId}")
+        when 'youtube#playlist'
+          #再生リスト
+          playList.store("#{search_result.snippet.title}", "https://www.youtube.com/playlist?list=#{search_result.id.playlistId}")
+        end
+      end
+
+      #結果をコンソールに出力
+      #puts "Channels:\n", channelList, "\n"
+      #puts "Playlists:\n", playList, "\n"
+      
+      video = params[:video]
+      puts 'params', video['type']
+       # 検索条件と検索結果のセット
+        case video['type']
+        when '0'
+          @data = videoList
+          @videoTyoe0 = true
+          @videoTyoe1 = false
+          @videoTyoe2 = false
+        when '1'
+          @data = channelList
+          @videoTyoe0 = false
+          @videoTyoe1 = true
+          @videoTyoe2 = false
+        when '2'
+          @data = playList
+          @videoTyoe0 = false
+          @videoTyoe1 = false
+          @videoTyoe2 = true
+        end
+       @keyword = keyword
+       #@video = video
+    rescue Google::APIClient::TransmissionError => e
+      #例外処理
+      puts e.result.body
+    end
+
+    render :action => 'index'
+  end
+
+  # サービス取得処理
   def get_service
     client = Google::APIClient.new(
     :key => DEVELOPER_KEY,
@@ -25,67 +113,5 @@ class YoutubeVer2Controller < ApplicationController
 
     return client, youtube
   end
-
-  # searchアクション
-  def search
-
-    # 検索語をクエリにセットして、リクエストする
-    keyword = params[:keyword]
-    opts = Trollop::options do
-      opt :q, 'Search term', :type => String, :default => keyword
-      opt :max_results, 'Max results', :type => :int, :default => 25
-    end
-
-    client, youtube = get_service
-
-    begin
-      # Call the search.list method to retrieve results matching the specified
-      # query term.
-      search_response = client.execute!(
-      :api_method => youtube.search.list,
-      :parameters => {
-        :part => 'snippet',
-        :q => opts[:q],
-        :maxResults => opts[:max_results]
-      }
-      )
-
-      videos = []
-      channels = []
-      playlists = []
-      videoURL = []
-      
-      # Add each result to the appropriate list, and then display the lists of
-      # matching videos, channels, and playlists.
-      videoList = Hash::new
-      
-      search_response.data.items.each do |search_result|
-        case search_result.id.kind
-        when 'youtube#video'
-          #videos << "#{search_result.snippet.title}"
-          #videoURL << "https://www.youtube.com/watch?v=#{search_result.id.videoId}"
-          videoList.store("#{search_result.snippet.title}", "https://www.youtube.com/watch?v=#{search_result.id.videoId}")
-        when 'youtube#channel'
-          channels << "#{search_result.snippet.title} (#{search_result.id.channelId})"
-        when 'youtube#playlist'
-          playlists << "#{search_result.snippet.title} (#{search_result.id.playlistId})"
-        end
-      end
-
-      #結果をコンソールに出力
-      puts "Videos:\n", videos, "\n"
-      puts "Channels:\n", channels, "\n"
-      puts "Playlists:\n", playlists, "\n"
-      
-      # 検索結果の表示と動画のURLを追加する
-       @data = videoList
-       @keyword = keyword
-    rescue Google::APIClient::TransmissionError => e
-      #例外処理
-      puts e.result.body
-    end
-
-    render :action => 'index'
-  end
-
+  
 end

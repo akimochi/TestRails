@@ -1,10 +1,14 @@
 <h1></h1>
+<!--「http://localhost:3000/youtube_ver2/」でアクセス -->
 <!--form_tagは <%= %> -->
 <%= form_tag("search", method: "get") do %>
   <fieldset>
   <legend>Youtube検索フォーム</legend>
   <%= text_field_tag :keyword, @keyword, :style=>"width:300px" %>
-  <%= submit_tag '検索', :style=>"width:100px" %>
+  <%= submit_tag '検索', :style=>"width:100px" %><br>
+  <label><%= radio_button 'video', 'type', '0', {:checked => @videoTyoe0} %>動画　</label>
+  <label><%= radio_button 'video', 'type', '1', {:checked => @videoTyoe1}  %>チャンネル　</label>
+  <label><%= radio_button 'video', 'type', '2', {:checked => @videoTyoe2}  %>再生リスト　</label>
   </fieldset>
 <% end %>
 
