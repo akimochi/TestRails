@@ -1,5 +1,7 @@
 require 'rexml/document'
-require 'youtube_test.rb'
+require 'rubygems'
+require 'google/api_client'
+require 'trollop'
 
 DEVELOPER_KEY = '自分のYoutube　APIキー'
 YOUTUBE_API_SERVICE_NAME = 'youtube'
