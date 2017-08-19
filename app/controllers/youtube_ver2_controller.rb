@@ -1,7 +1,7 @@
 require 'rexml/document'
 require 'youtube_test.rb'
 
-DEVELOPER_KEY = 'AIzaSyAeoGY4AcZO0-rz0eEu4gRc6-lqMN9GS58'
+DEVELOPER_KEY = '自分のYoutube　APIキー'
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
 
