@@ -3,7 +3,7 @@ require 'rubygems'
 require 'google/api_client'
 require 'trollop'
 
-DEVELOPER_KEY = '自分のYoutube　APIキー'
+#DEVELOPER_KEY = '自分のYoutube　APIキー'
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
 
@@ -11,9 +11,7 @@ class YoutubeVer2Controller < ApplicationController
   # 初期処理
   def index
     # ラジオボタン初期セット
-    @videoTyoe0 = true
-    @videoTyoe1 = false
-    @videoTyoe2 = false
+    init_radio
     respond_to do |format|
       format.html
     end
@@ -24,7 +22,8 @@ class YoutubeVer2Controller < ApplicationController
 
     keyword = params[:keyword]
     if keyword.empty?
-      # 検索語が空の場合は、何もしない
+      # 検索語が空の場合、ラジオボタン初期化
+      init_radio
       render :action => 'index'
       return
     end
@@ -77,9 +76,7 @@ class YoutubeVer2Controller < ApplicationController
         case video['type']
         when '0'
           @data = videoList
-          @videoTyoe0 = true
-          @videoTyoe1 = false
-          @videoTyoe2 = false
+          init_radio
         when '1'
           @data = channelList
           @videoTyoe0 = false
@@ -100,7 +97,12 @@ class YoutubeVer2Controller < ApplicationController
 
     render :action => 'index'
   end
-
+  # ラジオボタン初期処理
+   def init_radio
+     @videoTyoe0 = true
+     @videoTyoe1 = false
+     @videoTyoe2 = false
+   end
   # サービス取得処理
   def get_service
     client = Google::APIClient.new(
@@ -112,6 +114,12 @@ class YoutubeVer2Controller < ApplicationController
     youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
 
     return client, youtube
+  end
+  
+  # お気に入り登録処理(ajax処理)
+  def register
+    #puts "お気に入り登録処理", params
+    render json: 'no data'
   end
   
 end
