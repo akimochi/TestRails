@@ -18,8 +18,12 @@
 	<span style="font-weight: bold;">【検索結果】</span>
 	<%= submit_tag 'お気に入り登録', :style=>"width:100px" %><br>
 	<!--<%= %>と<% %>の違い -->
+	  <% index = 0 %>
 	  <% for x,y in @data %>
-	    <li><%= check_box 'page', 'checkVideoList', {}, true, false %>  <%= x %>　<a href="<%= y %>" target="_blank">Link</a></li>
+	    <li><input type="checkbox" name="checkVideoList[<%= index %>]" /><%= x %>　<a href="<%= y %>" target="_blank">Link</a></li>
+	    <input type="hidden" value="<%= x %>" name="items[<%= index %>]"  />
+	    <input type="hidden" value="<%= y %>" name="items[<%= index %>]"  />
+		<% index = index + 1 %>
 	  <% end %>
 	<% end %>
 <% end %>

@@ -20,6 +20,14 @@ class YoutubeVer2Controller < ApplicationController
   # 検索処理
   def search
 
+    video = params[:video]
+    if video['type'] == '3'
+      #お気に入りの場合
+      #SELECT * FROM bookmarks;
+      render :action => 'index'
+      return
+    end
+    
     keyword = params[:keyword]
     if keyword.empty?
       # 検索語が空の場合、ラジオボタン初期化
@@ -70,8 +78,7 @@ class YoutubeVer2Controller < ApplicationController
       #puts "Channels:\n", channelList, "\n"
       #puts "Playlists:\n", playList, "\n"
       
-      video = params[:video]
-      puts 'params', video['type']
+      #puts 'params', video['type']
        # 検索条件と検索結果のセット
         case video['type']
         when '0'
@@ -119,6 +126,9 @@ class YoutubeVer2Controller < ApplicationController
   # お気に入り登録処理(ajax処理)
   def register
     #puts "お気に入り登録処理", params
+#    bookmark = Bookmark.new
+#    bookmark.title_name = "テスト"
+#    bookmark.save
     render json: 'no data'
   end
   
