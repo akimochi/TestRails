@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'register'
+      get 'delete'
     end
   end
 end

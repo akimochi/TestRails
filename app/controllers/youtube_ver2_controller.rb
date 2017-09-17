@@ -21,15 +21,25 @@ class YoutubeVer2Controller < ApplicationController
   def search
 
     video = params[:video]
+    keyword = params[:keyword]
     if video['type'] == '3'
       #お気に入りの場合
-      #SELECT * FROM bookmarks;
+#      db = SQLite3::Database.new 'main.db'
+#      db.execute('SELECT * FROM bookmarks') do |row|
+#        p row
+#      end
+      
+        #モデル検索
+        @bookmarkData = Bookmark.all
+        @videoTyoe0 = false
+        @videoTyoe1 = false
+        @videoTyoe2 = false
+        @videoTyoe3 = true
+        @keyword = keyword
+     
       render :action => 'index'
       return
-    end
-    
-    keyword = params[:keyword]
-    if keyword.empty?
+    elsif keyword.empty?
       # 検索語が空の場合、ラジオボタン初期化
       init_radio
       render :action => 'index'
@@ -126,10 +136,51 @@ class YoutubeVer2Controller < ApplicationController
   # お気に入り登録処理(ajax処理)
   def register
     #puts "お気に入り登録処理", params
-#    bookmark = Bookmark.new
-#    bookmark.title_name = "テスト"
-#    bookmark.save
+    checkVideoList = params[:checkVideoList]
+    if checkVideoList == nil
+      # チェックがない場合、何もしない
+      render json: 'no data'
+      return
+    end
+    
+    #puts "お気に入り登録処理", params[:items]['1']['name']
+    for checkVideo in checkVideoList
+      #DB登録処理
+      bookmark = Bookmark.new
+      bookmark.title_name = params[:items][checkVideo]['name']
+      bookmark.url = params[:items][checkVideo]['url']
+      bookmark.save
+    end
+    
     render json: 'no data'
   end
   
+  # お気に入り削除処理(ajax処理)
+  def delete
+    #puts "お気に入り登録処理", params
+    checkVideoList = params[:checkVideoList]
+    if checkVideoList == nil
+      # チェックがない場合、何もしない
+      render json: 'no data'
+      return
+    end
+    
+    #puts "お気に入り登録処理", params[:items]['1']['id']
+    for checkVideo in checkVideoList
+      #削除処理
+      checkData = Bookmark.find(params[:items][checkVideo]['id'])
+      checkData.destroy
+    end
+    
+    #モデル検索
+    @bookmarkData = Bookmark.all
+    @videoTyoe0 = false
+    @videoTyoe1 = false
+    @videoTyoe2 = false
+    @videoTyoe3 = true
+    @keyword = params[:keywordHidden]
+
+    render :action => 'index'
+    #render json: 'no data'
+  end
 end

@@ -21,10 +21,22 @@
 	  <% index = 0 %>
 	  <% for x,y in @data %>
 	    <li><input type="checkbox" name="checkVideoList[<%= index %>]" /><%= x %>　<a href="<%= y %>" target="_blank">Link</a></li>
-	    <input type="hidden" value="<%= x %>" name="items[<%= index %>]"  />
-	    <input type="hidden" value="<%= y %>" name="items[<%= index %>]"  />
+	    <input type="hidden" value="<%= x %>" name="items[<%= index %>][name]"  />
+	    <input type="hidden" value="<%= y %>" name="items[<%= index %>][url]"  />
 		<% index = index + 1 %>
 	  <% end %>
+	<% end %>
+<% elsif @bookmarkData != nil %>
+	<%= form_tag("delete", method: "get", remote: false) do %>
+	<span style="font-weight: bold;">【お気に入り一覧】</span>
+	<%= submit_tag '削除', :style=>"width:100px" %><br>
+	  <% index = 0 %>
+	  <% for x in @bookmarkData %>
+	    <li><input type="checkbox" name="checkVideoList[<%= index %>]" /><%= x.title_name %>　<a href="<%= x.url %>" target="_blank">Link</a></li>
+	    <input type="hidden" value="<%= x.id %>" name="items[<%= index %>][id]"  />
+		<% index = index + 1 %>
+	  <% end %>
+	   <input type="hidden" value="<%= @keyword %>" name="keywordHidden"  />
 	<% end %>
 <% end %>
 </ul>
