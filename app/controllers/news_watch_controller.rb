@@ -11,8 +11,7 @@ class NewsWatchController < ApplicationController
     #ロケットニュース24
     url = "http://feeds.rocketnews24.com/rocketnews24"
     rss = RSS::Parser.parse(url)
-    rss.channel.items.each do|x|
-      puts x.title
-    end
+#     puts rss.channel.items
+    @data = rss.channel.items
   end  
 end

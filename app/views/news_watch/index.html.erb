@@ -1,5 +1,13 @@
 <h1></h1>
-
 <ul>
-
+	<%= form_tag("index", method: "get") do %>
+	<span style="font-weight: bold;">【ロケットニュース24】</span>
+	<!--<%= %>と<% %>の違い -->
+	  <% index = 0 %>
+	  <% for x in @data %>
+	    <li><a href="<%= x.link %>" target="_blank"><%= x.title %></a></li>
+		<% index = index + 1 %>
+		<% if index >= 10 %><% break %><% end %>
+	  <% end %>
+	<% end %>
 </ul>
