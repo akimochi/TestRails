@@ -4,14 +4,19 @@ require "rss"
 class NewsWatchController < ApplicationController
   # 初期処理
   def index
-    #GIGAZINE
-    #url = "http://feed.rssad.jp/rss/gigazine/rss_2.0"
     #yahoo
-    #url = "https://news.yahoo.co.jp/pickup/rss.xml"
+    url = "https://news.yahoo.co.jp/pickup/rss.xml"
+    rss = RSS::Parser.parse(url)
+    @yahooData = rss.channel.items
+    
+    #GIGAZINE
+    url = "http://feed.rssad.jp/rss/gigazine/rss_2.0"
+    rss = RSS::Parser.parse(url)
+    @gigazineData = rss.channel.items
+    
     #ロケットニュース24
     url = "http://feeds.rocketnews24.com/rocketnews24"
     rss = RSS::Parser.parse(url)
-#     puts rss.channel.items
-    @data = rss.channel.items
+    @rocketData = rss.channel.items
   end  
 end

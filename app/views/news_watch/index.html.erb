@@ -1,10 +1,26 @@
 <h1></h1>
 <ul>
 	<%= form_tag("index", method: "get") do %>
-	<span style="font-weight: bold;">【ロケットニュース24】</span>
-	<!--<%= %>と<% %>の違い -->
+	<span style="font-weight: bold;">【Yahooニュース】</span>
+		<!--<%= %>と<% %>の違い -->
 	  <% index = 0 %>
-	  <% for x in @data %>
+	  <% for x in @yahooData %>
+	    <li><a href="<%= x.link %>" target="_blank"><%= x.title %></a></li>
+		<% index = index + 1 %>
+		<% if index >= 10 %><% break %><% end %>
+	  <% end %>
+	<br>
+	<span style="font-weight: bold;">【GIGAZINE】</span>
+	  <% index = 0 %>
+	  <% for x in @gigazineData %>
+	    <li><a href="<%= x.link %>" target="_blank"><%= x.title %></a></li>
+		<% index = index + 1 %>
+		<% if index >= 10 %><% break %><% end %>
+	  <% end %>
+	<br>
+	<span style="font-weight: bold;">【ロケットニュース24】</span>
+	  <% index = 0 %>
+	  <% for x in @rocketData %>
 	    <li><a href="<%= x.link %>" target="_blank"><%= x.title %></a></li>
 		<% index = index + 1 %>
 		<% if index >= 10 %><% break %><% end %>
