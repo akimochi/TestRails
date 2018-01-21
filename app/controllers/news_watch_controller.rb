@@ -25,6 +25,7 @@ class NewsWatchController < ApplicationController
     uri = URI.parse('http://weather.livedoor.com/forecast/webservice/json/v1?city=140020')
     json = Net::HTTP.get(uri)
     @weatherData = JSON.parse(json)
-    p @weatherData["pinpointLocations"]
+    p @weatherData['forecasts']
+
   end  
 end

@@ -25,12 +25,12 @@
 		<% index = index + 1 %>
 		<% if index >= 10 %><% break %><% end %>
 	  <% end %>
-		<span style="font-weight: bold;">【今日の天気　神奈川県(西部) 】</span>
+	  <br>
+		<span style="font-weight: bold;">【小田原の天気】</span>
 	  <% index = 0 %>
-	  <% for x in @weatherData["pinpointLocations"] %>
-	    <li><a href="<%= x["link"] %>" target="_blank"><%= x["name"] %></a></li>
-		<% index = index + 1 %>
-		<% if index >= 10 %><% break %><% end %>
+	  <% for x in @weatherData["forecasts"] %>
+	   <hr /><br><span style="font-weight: bold;"><%= x["dateLabel"] %></span><br>
+	   <%= x["telop"] %><img src="<%= x["image"]["url"] %>" alt="">
 	  <% end %>
 	<% end %>
 </ul>
