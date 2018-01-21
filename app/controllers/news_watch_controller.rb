@@ -21,7 +21,7 @@ class NewsWatchController < ApplicationController
     rss = RSS::Parser.parse(url)
     @rocketData = rss.channel.items
     
-    #天気
+    #小田原の天気
     uri = URI.parse('http://weather.livedoor.com/forecast/webservice/json/v1?city=140020')
     json = Net::HTTP.get(uri)
     @weatherData = JSON.parse(json)
