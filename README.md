@@ -1,129 +1,25 @@
-# オープン職務経歴書
-公開出来ない情報は伏せているので、職務経歴書というよりはスキルシート寄り(2017/12/30 現在)
+Name
 
-本オープン職務経歴書について、作成の経緯などを以下記事にまとめてあります。
+Railsテストプロジェクト
 
-[話題のオープン職務経歴書を書いてみる](https://qiita.com/Sa2Knight/items/4af2f24fac9290d26119)
+名前のすぐ下にこのツールの概要を一言で書く．レポジトリを訪れたユーザがまず最初に目にし，このツールは何ができるのかを判断する．例えば，
 
-## 基本情報
+    kennethreitz/requests - Requests is an Apache2 Licensed HTTP library, written in Python, for human beings.
+    progrium/dokku - Docker powered mini-Heroku. The smallest PaaS implementation you’ve ever seen.
+    mitchellh/gox - Gox is a simple, no-frills tool for Go cross compilation that behaves a lot like standard go build.
 
-|key|value|
-|----|----|
-|Name|笹木 信吾|
-|Birth|1992/05/29|
-|Family|既婚・子なし|
-|Location|東京都 墨田区|
-|Education|地方駅弁|
-|Mail|shingo.sasaki.0529@gmail.com|
-|Blog|[qs Developers](http://qs.nndo.jp/)|
-|Github|[Sa2Knight](https://github.com/Sa2Knight)|
-|Twitter|[@HousouP](https://twitter.com/HousouP)|
-|Facebook|[笹木 信吾](https://www.facebook.com/shingo.sasaki.752487)|
-|Qiita|[@Sa2Knight](https://qiita.com/Sa2Knight)|
-|booklog|[sa2knight](http://booklog.jp/users/sa2knight)
+プロジェクトやツールの名前が，何かに由来する場合は，その画像を貼っておくとインパクトがある．例えば，
 
-## 趣味
+    tsenart/vegeta
+    flynn/strowger
+    guard/guard
 
-- カラオケ
-  - 年間1200曲ぐらい歌う(2年連続)
-  - 手前味噌でほぼ自分用に作った下記記録システムで全曲記録してる
-  - [パンダリンのカラオケランド](https://tk2-255-37407.vs.sakura.ne.jp/user/userpage/sa2knight)
-- デグー飼育
-  - ややマイナー気味な小動物"デグー"を飼育中(2018/04/10現在5匹)
-  - よく写真を撮っては[Twitter](https://twitter.com/HousouP)にあげてる
+Description
 
-## 関連の強い技術ワード
+概要だけでは伝わらない場合にもう少し丁寧な説明を書く．例えば，
 
-- Mac
-- iTerm2
-- vim
-- Ruby
-- Ruby on Rails
-- JavaScript
-- Vue.js
+    kennethreitz/requests - Most existing Python modules for sending HTTP requests are extremely verbose and cumbersome. Python’s builtin urllib2 module provides most of the HTTP capabilities you should need, but the api is thoroughly broken. It requires an enormous amount of work (even method overrides) to perform the simplest of tasks.
 
-## 転職について
+OverviewとDescriptionはとても見られる．その証拠に自分のあるプロジェクトでは，Descriptionでの単語のスペルミスに対してすぐさまPull Requestでの指定をうけた（ただしこれは珍しいことだと思う．人によっては簡単なスペルミスだけでそのプロジェクトを切り捨てるかもしれない）．
 
-**現在、積極的な転職活動を行う予定はありません。**
-
-が、自分のエンジニアとしての市場価値を客観視したいのと、それと現状の待遇にアンマッチがあるのであれば何らかの行動をしたい程度の意欲はありますので、お気軽に上記メールアドレスまでご連絡ください。
-
-## 労働環境に関する主な希望
-
-- 技術力向上がしやすい環境
-  - 技術力向上に対する意欲の高い人が多い
-  - 幅広い分野の技術で相談できる人がいる
-  - 書籍購入費、勉強会参加費、資格試験費などがある程度補助される
-  - 社内勉強会、LTなど
-- 現代的な開発
-  - ドキュメントの整備
-  - テスト重視(TDDやCI)
-  - モダンな技術/ツールの活用
-  - コードレビュー/プルリク
-- 自分のペースで働ける
-  - フレックス制度
-    - コアタイム短めだと尚良
-  - リモートワーク
-- 自分の慣れた開発環境
-  - BYOD
-  - MacBook
-  - エディタ選択の自由(というかvim)
-- 残業少なめ
-  - どうせするなら早朝出勤
-- 好みの技術が使える
-  - Ruby(Rails/Sinatra)
-  - JavaScript(Angular/React/Vue)
-
-## 資格
-IPA資格は全て学生時代に取得。個人的には資格は学生のうちにとって、社会に出たらどんどん実務を重ねたほうが良いと思ってます。
-
-|資格名|取得年月|
-|-----|--------|
-|ITパスポート|2010/11|
-|基本情報技術者|2012/05|
-|応用情報技術者|2013/06|
-|情報セキュリティスペシャリスト|2014/06|
-|ネットワークスペシャリスト|2014/12|
-
-## 自然言語
-平均的に対人コミュニケーションが苦手とされるエンジニア業界の中では比較的まともにコミュニケーションが取れる方だと思ってます。
-**英語は苦手です**
-
-|言語|レベル|
-|-----|-----|
-|日本語|ネイティブだけど資格は特になし|
-|英語|Google翻訳や辞書に頼れば英語のドキュメントが読める程度で資格は特になし|
-
-## プログラミング言語/フレームワーク
-
-|言語/フレームワーク|備考|
-|-----|------------|
-|C言語|自身の原点だが、競技プログラミングで使用する最低限レベル|
-|C#|学生時代に各種Windowsアプリケーションの開発に利用|
-|Java|大学でちょっと触れた程度。オブジェクト指向の学習用の目的が強かった|
-|Perl|新卒後最初の会社でWebアプリケーションの開発に使用したきり。ワンライナーしやすい|
-|Ruby|一番好きで一番得意。Webアプリケーションからユーティリティツールまで使ってる|
-|Ruby(Sinatra)|趣味で運用してるWebサービスで利用。Rails使うよりも勉強にはなる|
-|Ruby(Rails)|Webアプリケーション開発業務に利用。もう他のフレームワークには戻れない|
-|PHP|Webアプリケーション開発業務でよく使う。個人的には好きじゃないので趣味では使わない|
-|PHP(Laravel)|一番使うPHPのフレームワーク。全体的にRailsライクなので良い|
-|PHP(Wordpress)|コンテンツを動的に追加するWebサービスなら何でもWordpressな風潮はどうかと|
-|Python|scikit-learnによる機械学習とか、BottleによるAPIサーバの実装に利用|
-|Objective-C|既存のiOSアプリケーションの改良に使用。もう使わなそう。|
-|Swift|簡単なカメラアプリケーションの実装程度|
-|JavaScript|Web開発で必須なのでES6含め広く浅く経験|
-|JavaScript(jQuery)|簡単なjQueryプラグインを作れる程度。できればもうやりたくない|
-|JavaScript(Angular)|数が月触れた程度。学習コストが高い|
-|JavaScript(Vue)|趣味/実務それぞれで軽く触れている。Vue-Router使ったSPAの開発をガッツリやりたい|
-|JavaScript(React)|実務で使用。ビューとロジックが密なの結構好き|
-|JavaScript(Redux)|実務で半年ほどの経験があるのに最後までよくわからなかった|
-|JavaScript(node)|expressやsocket.ioなどを用いた開発を趣味と実務で少々|
-|シェルスクリプト|エディタ(vim)含めbashをよく使ってるのでシェルスクリプトも最低限は書ける|
-|HTML5|プログラミング言語じゃないけど、Web開発業務で継続的に利用している|
-|CSS/scss|デザインを与えられれば概ねをそれを再現できる程度|
-|SQL|mySQL/postgreSQLを用いたWebアプリケーション開発で利用。簡単な問い合わせは一通り可能|
-
-## 実務経歴
-
-短期的な受託開発が多いので数は多いが質は微妙なのが多い
-並行進行のプロジェクトもあるので、期間が重複していたり、実体より長かったりしている
+自分だけが良いと思っていてもそれを分かりやすく伝えない限り使われない．どんどんブラッシュアップしていかないといけない．
