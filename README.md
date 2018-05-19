@@ -1,12 +1,7 @@
-Name
-
+●Name
 Railsテストプロジェクト
 
 名前のすぐ下にこのツールの概要を一言で書く．レポジトリを訪れたユーザがまず最初に目にし，このツールは何ができるのかを判断する．例えば，
-
-    kennethreitz/requests - Requests is an Apache2 Licensed HTTP library, written in Python, for human beings.
-    progrium/dokku - Docker powered mini-Heroku. The smallest PaaS implementation you’ve ever seen.
-    mitchellh/gox - Gox is a simple, no-frills tool for Go cross compilation that behaves a lot like standard go build.
 
 プロジェクトやツールの名前が，何かに由来する場合は，その画像を貼っておくとインパクトがある．例えば，
 
