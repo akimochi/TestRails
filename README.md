@@ -1,4 +1,4 @@
-●Name
+# Name
 
 Railsテストプロジェクト
 
@@ -10,7 +10,7 @@ Railsテストプロジェクト
     flynn/strowger
     guard/guard
 
-Description
+# Description
 
 概要だけでは伝わらない場合にもう少し丁寧な説明を書く．例えば，
 
