@@ -12,7 +12,7 @@ http://localhost:3000/youtube_ver2/
 http://localhost:3000/news_watch/  
 
 # Description
-●Youtube連携機能に関して  
-・Youtube連携するには、Google DevelopersからAPIキーを取得する必要あり  
-●ニュース一覧機能に関して  
+・Youtube連携機能に関して  
+Youtube連携するには、Google DevelopersからAPIキーを取得する必要あり  
+・ニュース一覧機能に関して  
 気になるニュースをDBに登録し、後で見返す機能を追加する予定  
